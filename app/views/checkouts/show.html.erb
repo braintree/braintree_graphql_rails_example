@@ -42,118 +42,45 @@
         <tbody>
           <tr>
             <th>id</th>
-            <td><%= @transaction.id %></td>
-          </tr>
-          <tr>
-            <th>type</th>
-            <td><%= @transaction.type %></td>
+            <td><%= @transaction["id"] %></td>
           </tr>
           <tr>
             <th>amount</th>
-            <td><%= @transaction.amount %></td>
+            <td><%= @transaction["amount"]["value"] + " " + @transaction["amount"]["currencyIsoCode"] if @transaction["amount"] %></td>
           </tr>
           <tr>
-            <th>status</th>
-            <td><%= @transaction.status %></td>
+            <th>current status</th>
+            <td><%= @transaction["status"] %></td>
           </tr>
           <tr>
-            <th>created_at</th>
-            <td><%= @transaction.created_at %></td>
-          </tr>
-          <tr>
-            <th>updated_at</th>
-            <td><%= @transaction.updated_at %></td>
+            <th>created at</th>
+            <td><%= @transaction["createdAt"] %></td>
           </tr>
         </tbody>
       </table>
     </section>
 
-    <section>
-      <h5>Payment</h5>
-
-      <table cellpadding="0" cellspacing="0">
-        <tbody>
-          <tr>
-            <th>token</th>
-            <td><%= @transaction.credit_card_details.token %></td>
-          </tr>
-          <tr>
-            <th>bin</th>
-            <td><%= @transaction.credit_card_details.bin %></td>
-          </tr>
-          <tr>
-            <th>last_4</th>
-            <td><%= @transaction.credit_card_details.last_4 %></td>
-          </tr>
-          <tr>
-            <th>card_type</th>
-            <td><%= @transaction.credit_card_details.card_type %></td>
-          </tr>
-          <tr>
-            <th>expiration_date</th>
-            <td><%= @transaction.credit_card_details.expiration_date %></td>
-          </tr>
-          <tr>
-            <th>cardholder_name</th>
-            <td><%= @transaction.credit_card_details.cardholder_name %></td>
-          </tr>
-          <tr>
-            <th>customer_location</th>
-            <td><%= @transaction.credit_card_details.customer_location %></td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <% if @transaction.customer_details.id %>
+    <% if @transaction["paymentMethodSnapshot"] %>
       <section>
-        <h5>Customer</h5>
-
-        <table cellpadding="0" cellspacing="0">
-          <tbody>
-            <tr>
-              <th>id</th>
-              <td><%= @transaction.customer_details.id %></td>
-            </tr>
-            <tr>
-              <th>first_name</th>
-              <td><%= @transaction.customer_details.first_name %></td>
-            </tr>
-            <tr>
-              <th>last_name</th>
-              <td><%= @transaction.customer_details.last_name %></td>
-            </tr>
-            <tr>
-              <th>email</th>
-              <td><%= @transaction.customer_details.email %></td>
-            </tr>
-            <tr>
-              <th>company</th>
-              <td><%= @transaction.customer_details.company %></td>
-            </tr>
-            <tr>
-              <th>website</th>
-              <td><%= @transaction.customer_details.website %></td>
-            </tr>
-            <tr>
-              <th>phone</th>
-              <td><%= @transaction.customer_details.phone %></td>
-            </tr>
-            <tr>
-              <th>fax</th>
-              <td><%= @transaction.customer_details.fax %></td>
-            </tr>
-          </tbody>
-        </table>
+        <h5>Payment</h5>
+        <% if @transaction["paymentMethodSnapshot"]["__typename"] == "CreditCardDetails" %>
+          <%= render "checkouts/credit_card_details", :locals => {:credit_card => @transaction["paymentMethodSnapshot"]} %>
+        <% end %>
+        <% if @transaction["paymentMethodSnapshot"]["__typename"] == "PayPalTransactionDetails" %>
+          <%= render "checkouts/paypal_account_details", :locals => {:paypal_account => @transaction["paymentMethodSnapshot"]} %>
+        <% end %>
       </section>
     <% end %>
 
     <section>
-      <p class="center small">Integrate with the Braintree SDK for a secure and seamless checkout</p>
+      <p class="center small">Integrate with the Braintree JS SDK and GraphQL API for a secure and seamless checkout</p>
     </section>
     <section>
+      <a class="button secondary full" href="https://graphql.braintreepayments.com" target="_blank">
+        <span>See the GraphQL Docs</span>
+      </a>
       <a class="button secondary full" href="https://developers.braintreepayments.com/guides/drop-in" target="_blank">
-        <span>See the Docs</span>
+        <span>See the JS Drop-In Docs</span>
       </a>
     </section>
   </article>

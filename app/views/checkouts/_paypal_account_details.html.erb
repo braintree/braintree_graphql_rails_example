@@ -1,0 +1,28 @@
+<% paypal_account = locals[:paypal_account] %>
+<h6>by PayPal Account</h6>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    <% if paypal_account["payer"] %>
+      <tr>
+        <th>email</th>
+        <td><%= paypal_account["payer"]["email"] %></td>
+      </tr>
+      <tr>
+        <th>payer ID</th>
+        <td><%= paypal_account["payer"]["payerId"] %></td>
+      </tr>
+      <tr>
+        <th>first name</th>
+        <td><%= paypal_account["payer"]["firstName"] %></td>
+      </tr>
+      <tr>
+        <th>last name</th>
+        <td><%= paypal_account["payer"]["lastName"] %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th>payer status</th>
+      <td><%= paypal_account["payerStatus"] %></td>
+    </tr>
+  </tbody>
+</table>

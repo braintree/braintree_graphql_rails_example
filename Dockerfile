@@ -2,7 +2,7 @@ FROM ruby:2.3.1-onbuild
 
 RUN apt-get update && apt-get install -y build-essential nodejs
 
-ENV APP_HOME /braintree_rails_example
+ENV APP_HOME /braintree_graphql_rails_example
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 

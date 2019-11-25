@@ -5,7 +5,7 @@ RSpec.describe "checkouts/show.html.erb", type: :view do
   include_context 'mock_data'
 
   before(:each) do
-    assign(:transaction, mock_transaction)
+    assign(:transaction, mock_successful_fetched_transaction["data"]["transaction"])
   end
 
   it "renders the Transaction header" do
