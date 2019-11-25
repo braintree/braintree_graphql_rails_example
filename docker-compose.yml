@@ -6,4 +6,4 @@ services:
     ports:
       - "4567:4567"
     volumes:
-      - .:/braintree_rails_example
+      - .:/braintree_graphql_rails_example

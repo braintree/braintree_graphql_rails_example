@@ -1,0 +1,42 @@
+<% credit_card = locals[:credit_card] %>
+<h6>by Credit Card</h6>
+<table cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <th>card type</th>
+      <td><%= credit_card["brandCode"] %></td>
+    </tr>
+    <tr>
+      <th>bin</th>
+      <td><%= credit_card["bin"] %></td>
+    </tr>
+    <tr>
+      <th>last 4</th>
+      <td><%= credit_card["last4"] %></td>
+    </tr>
+    <tr>
+      <th>expiration month</th>
+      <td><%= credit_card["expirationMonth"] %></td>
+    </tr>
+    <tr>
+      <th>expiration year</th>
+      <td><%= credit_card["expirationYear"] %></td>
+    </tr>
+    <tr>
+      <th>cardholder name</th>
+      <td><%= credit_card["cardholderName"] %></td>
+    </tr>
+    <tr>
+      <th>card issued in</th>
+      <td><%= credit_card.fetch("binData", {})["countryOfIssuance"] %></td>
+    </tr>
+    <tr>
+      <th>card sourced from</th>
+      <% if credit_card["origin"] %>
+        <td><%= credit_card["origin"]["type"] %></td>
+      <% else %>
+        <td>customer entering card details directly</td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

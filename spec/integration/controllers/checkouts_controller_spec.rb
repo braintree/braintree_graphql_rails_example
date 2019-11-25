@@ -28,26 +28,17 @@ RSpec.describe CheckoutsController, type: :controller do
     it "retrieves the Braintree transaction and displays its attributes" do
       # Using a random amount to prevent duplicate checking errors
       amount = "#{random.rand(100)}.#{random.rand(100)}"
-      result = gateway.transaction.sale(
-        :amount => amount,
-        :payment_method_nonce => "fake-valid-nonce",
-      )
+      result = BraintreeGateway.new(HTTParty).transaction("fake-valid-nonce", amount)
+      expect(result["data"]["chargePaymentMethod"]).not_to be_nil
 
-      expect(result).to be_success
-      transaction = result.transaction
+      transaction = result["data"]["chargePaymentMethod"]["transaction"]
 
-      get :show, params: { id: transaction.id }
+      get :show, params: { id: transaction["id"] }
 
       expect(response).to have_http_status(:success)
-      expect(response.body).to match Regexp.new(transaction.id)
-      expect(response.body).to match Regexp.new(transaction.type)
-      expect(response.body).to match Regexp.new(transaction.amount.to_s)
-      expect(response.body).to match Regexp.new(transaction.status)
-      expect(response.body).to match Regexp.new(transaction.credit_card_details.bin)
-      expect(response.body).to match Regexp.new(transaction.credit_card_details.last_4)
-      expect(response.body).to match Regexp.new(transaction.credit_card_details.card_type)
-      expect(response.body).to match Regexp.new(transaction.credit_card_details.expiration_date)
-      expect(response.body).to match Regexp.new(transaction.credit_card_details.customer_location)
+      expect(response.body).to match Regexp.new(transaction["id"])
+      expect(response.body).to match Regexp.new(amount)
+      expect(response.body).to match "SUBMITTED_FOR_SETTLEMENT"
     end
   end
 

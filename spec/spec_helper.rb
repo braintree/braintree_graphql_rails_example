@@ -41,8 +41,8 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    # Prevent Braintree from logging to standard out during tests
-    Braintree::Configuration.logger = Logger.new("/dev/null")
+    # Prevent BraintreeGateway from logging to standard out during tests
+    BraintreeGateway::LOGGER = Logger.new("/dev/null")
   end
 
 # The settings below are suggested to provide a good initial experience

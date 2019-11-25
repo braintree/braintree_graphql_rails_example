@@ -1,8 +1,8 @@
-# Braintree Rails Example
+# Braintree GraphQL Example in Rails
 
-[![Build Status](https://travis-ci.org/braintree/braintree_rails_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_rails_example)
+[![Build Status](https://travis-ci.org/braintree/braintree_graphql_rails_example.svg?branch=master)](https://travis-ci.org/braintree/braintree_graphql_rails_example)
 
-An example Braintree integration for Ruby on Rails.
+An example Braintree integration with the [GraphQL API](https://graphql.braintreepayments.com/) using Ruby on Rails. Forked from [braintree/braintree_rails_example](https://github.com/braintree/braintree_rails_example).
 
 ## Setup Instructions
 
@@ -30,7 +30,7 @@ An example Braintree integration for Ruby on Rails.
 
 You can deploy this app directly to Heroku to see the app live. Skip the setup instructions above and click the button below. This will walk you through getting this app up and running on Heroku in minutes.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/braintree/braintree_rails_example&env[BT_ENVIRONMENT]=sandbox)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/braintree/braintree_graphql_rails_example&env[BT_VERSION]=2019-11-11)
 
 ## Running Tests
 
@@ -57,7 +57,7 @@ Sandbox transactions must be made with [sample credit card numbers](https://deve
 
 ## Help
 
- * Found a bug? Have a suggestion for improvement? Want to tell us we're awesome? [Submit an issue](https://github.com/braintree/braintree_rails_example/issues)
+ * Found a bug? Have a suggestion for improvement? Want to tell us we're awesome? [Submit an issue](https://github.com/braintree/braintree_graphql_rails_example/issues)
  * Trouble with your integration? Contact [Braintree Support](https://support.braintreepayments.com/) / support@braintreepayments.com
  * Want to contribute? [Submit a pull request](https://help.github.com/articles/creating-a-pull-request)
 
