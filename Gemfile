@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '>= 2.5.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '5.2.2.1'
 # Bootsnap for Rails 5 to optimize and cache expensive computations, Read more: https://github.com/Shopify/bootsnap
@@ -26,6 +28,8 @@ gem 'dotenv', '~> 2.0'
 
 gem 'httparty', '~> 0.16.2'
 
+gem 'nokogiri', '~> 1.11.3'
+
 group :development, :test do
   # Use sqlite in development and test for ease of setup
   gem 'sqlite3'
@@ -48,7 +52,7 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # The Listen gem listens to file modifications and notifies you about the changes.
-  gem 'listen', '~> 3.1', '>= 3.1.5'
+  gem 'listen', '>= 3.1.5'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
