@@ -28,7 +28,7 @@ gem 'dotenv', '~> 2.0'
 
 gem 'httparty', '~> 0.16.2'
 
-gem 'nokogiri', '~> 1.11.3'
+gem 'nokogiri', '~> 1.11.4'
 
 group :development, :test do
   # Use sqlite in development and test for ease of setup
