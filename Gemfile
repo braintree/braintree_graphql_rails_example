@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '>= 2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.2.1'
+gem 'rails', '5.2.4.6'
 # Bootsnap for Rails 5 to optimize and cache expensive computations, Read more: https://github.com/Shopify/bootsnap
 gem 'bootsnap', '1.3.2'
 # Use SCSS for stylesheets
@@ -21,14 +21,14 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+# bundle exec rake rdoc generates the API under doc/api.
+gem 'sdoc', '>= 2.2.0', group: :doc
 
 gem 'dotenv', '~> 2.0'
 
 gem 'httparty', '~> 0.16.2'
 
-gem 'nokogiri', '~> 1.11.3'
+gem 'nokogiri', '>= 1.11.4'
 
 group :development, :test do
   # Use sqlite in development and test for ease of setup
