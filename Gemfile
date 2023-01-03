@@ -26,7 +26,7 @@ gem 'sdoc', '>= 2.2.0', group: :doc
 
 gem 'dotenv', '~> 2.0'
 
-gem 'httparty', '~> 0.16.2'
+gem 'httparty', '~> 0.21.0'
 
 gem 'nokogiri', '>= 1.11.4'
 
